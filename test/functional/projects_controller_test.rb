@@ -53,7 +53,7 @@ class MylynConnector::ProjectsControllerTest < MylynConnector::ControllerTest
     assert_tag :tag => 'issuecustomfieldsbytracker', :content => '2 6', :attributes => {:trackerid => 3}, :parent => {:tag => 'issuecustomfields', :children => {:count => 2}, :parent => p3}
 
     acts =  {:tag => 'timeentryactivities', :children => {:count => 2}, :parent=>p1}
-    act = {:tag => 'timeentryactivity', :attributes => {:id => 15}, :parent => acts}
+    act = {:tag => 'timeentryactivity', :attributes => {:id => 999}, :parent => acts}
     assert_tag :tag => 'name', :content => 'Development', :parent => act
     assert_tag :tag => 'position', :content => '5', :parent => act
     assert_tag :tag => 'isdefault', :content => 'false', :parent => act

@@ -31,6 +31,6 @@ ActionController::Routing::Routes.draw do |map|
     rmc.connect 'mylyn/attachment/:id/:filename', :controller => 'attachments', :action => 'download', :format=> 'xml', :id => /\d+/, :filename => /.*/
   end
 
-  map.connect 'mylyn/authtest', :controller => 'MylynConnector::Information', :action => 'authtest', :conditions => {:method => :get}
+  map.connect 'mylyn/authtest', :controller => 'MylynConnector::Information', :action => 'authtest', :format=> 'xml', :conditions => {:method => :get}
 
 end

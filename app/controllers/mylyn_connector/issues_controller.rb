@@ -60,7 +60,7 @@ class MylynConnector::IssuesController < MylynConnector::ApplicationController
     @issues = Issue.find(
       :all,
       :joins => ["join #{Project.table_name} on project_id=#{Project.table_name}.id"],
-      :conditions => ["#{Issue.table_name}.id in (?) and #{Issue.table_name}.updated_on >= ? and " << Project.visible_by, issues, cond]
+      :conditions => ["#{Issue.table_name}.id in (?) and #{Issue.table_name}.updated_on >= ? and " << Project.visible_condition(User.current), issues, cond]
     )
     respond_to do |format|
       format.xml {render :layout => false}
@@ -76,7 +76,7 @@ class MylynConnector::IssuesController < MylynConnector::ApplicationController
     @issues = Issue.find(
       :all,
       :joins => ["join #{Project.table_name} on project_id=#{Project.table_name}.id"],
-      :conditions => ["#{Issue.table_name}.id in (?) and " << Project.visible_by, issues]
+      :conditions => ["#{Issue.table_name}.id in (?) and " << Project.visible_condition(User.current), issues]
     )
     respond_to do |format|
       format.xml {render :layout => false}

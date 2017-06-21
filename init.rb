@@ -18,3 +18,12 @@ require 'mylyn_connector/patches/custom_value_patch'
 Dispatcher.to_prepare do
   CustomValue.send(:include, MylynConnector::Patches::CustomValuePatch) unless CustomValue.included_modules.include?(MylynConnector::Patches::CustomValuePatch)
 end
+
+#Redmine::VERSION.to_a.slice(0,2).join('.')
+
+if MylynConnector::Version.redmine_release.to_f < 1.2
+  require 'mylyn_connector/patches/project_patch'
+  Dispatcher.to_prepare do
+    Project.send(:include, MylynConnector::Patches::ProjectPatch) unless Project.included_modules.include?(MylynConnector::Patches::ProjectPatch)
+  end
+end

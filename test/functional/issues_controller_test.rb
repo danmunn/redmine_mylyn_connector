@@ -105,7 +105,7 @@ class MylynConnector::IssuesControllerTest < MylynConnector::ControllerTest
 
     assert_tag :tag => 'watchers', :attributes => {:viewallowed=>'true', :addallowed=>'false', :deleteallowed=>'false'}, :content => '2', :parent => i
 
-    atts = {:tag => 'attachments', :children => {:count => (is1dot2? ? 5 : 4)},:parent => i}
+    atts = {:tag => 'attachments', :children => {:count => (isMin1dot2? ? 5 : 4)},:parent => i}
     att = {:tag => 'attachment', :attributes => {:id => 1}, :parent => atts}
     assert_tag :tag => 'authorid', :content => '2', :parent => att
     assert_tag :tag => 'contenttype', :content => 'text/plain', :parent => att

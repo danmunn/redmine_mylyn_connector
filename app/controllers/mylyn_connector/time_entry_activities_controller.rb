@@ -4,7 +4,7 @@ class MylynConnector::TimeEntryActivitiesController < MylynConnector::Applicatio
   unloadable
 
   accept_api_auth :all
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   helper MylynConnector::MylynHelper
 
   def all

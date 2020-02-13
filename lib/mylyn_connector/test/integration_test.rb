@@ -2,7 +2,7 @@ module MylynConnector
 
   module Test
 
-    class IntegrationTest < ActionController::IntegrationTest
+    class IntegrationTest < ActionDispatch::IntegrationTest
 
       include MylynConnector::Version
 

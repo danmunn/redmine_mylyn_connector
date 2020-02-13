@@ -5,12 +5,12 @@ class MylynConnector::IssuesController < MylynConnector::ApplicationController
 
   accept_api_auth :show, :index, :list, :updated_since
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
-  before_filter :find_optional_project, :only => [:index]
-  before_filter :find_issue, :only => [:show]
-  before_filter :find_project, :only => [:show]
-  before_filter :authorize
+  before_action :find_optional_project, :only => [:index]
+  before_action :find_issue, :only => [:show]
+  before_action :find_project, :only => [:show]
+  before_action :authorize
 
   helper MylynConnector::MylynHelper
   helper :queries
@@ -18,7 +18,7 @@ class MylynConnector::IssuesController < MylynConnector::ApplicationController
   helper :sort
   include SortHelper
 
-  
+
   def show
     respond_to do |format|
       format.xml {render :layout => nil}
